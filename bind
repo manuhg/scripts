@@ -1,0 +1,9 @@
+export wbroot=/media/gk1000/1010/Webroot
+export gkhm=/home/gk1000
+export fllinx=/media/gk1000/fl_linux
+export _1010=/media/gk1000/1010
+if [ ! -d "media/gk1000/1010" ]; then
+  mkdir /media/gk1000/1010
+fi
+sudo mount /dev/sdb3 /media/gk1000/1010
+sudo mount --bind /media/gk1000/1010/Webroot /var/www
