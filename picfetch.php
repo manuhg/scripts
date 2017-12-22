@@ -4,11 +4,12 @@ foreach( $argv as $arg)
 {
 	echo $arg."\n";
 	if($i++==0/* && !preg_match('http',$arg)*/)continue;
-	$patt='<meta\s+property="og:image".*content="(.*)".*>';
+	//$patt='<meta\s+property="og:image".*content="(.*)".*>';
+	$patt='<meta property=\"og:image\" content=\"(.*)\".*>';
 	$pcontent=get_url($arg);
 	if(preg_match($patt,$pcontent,$matches))
 	{
-		echo $matches[1];
+		echo "Match :$matches[1]";
 		system("wget $matches[1]");
 	}	
 }
