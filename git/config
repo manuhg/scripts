@@ -1,0 +1,17 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = ssh://198.199.121.120:17/home/gk1000/arch.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+[remote "alt"]
+	url = https://gk1000@bitbucket.org/gk1000/arch.git
+	fetch = +refs/heads/*:refs/remotes/alt/*
+[remote "github"]
+	url = ssh://git@github.com/manuhg/arch.git
+	fetch = +refs/heads/*:refs/remotes/github/*
