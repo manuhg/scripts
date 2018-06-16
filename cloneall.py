@@ -13,6 +13,10 @@ def clone(repo_name,base_url='',exclude=[]):
 
 def clone_from_github(repo):
     if hasattr(repo,'ssh_url') and clone(repo.ssh_url,'',auto_clone_excludes):
+        try:
+            os.system('cd '+repo.name+' && git remote add cloud ssh://gk1000@198.199.121.120:17/home/gk1000/'+repo.name+'.git && cd ..')
+        except Exception as e:
+            print(e)
         return repo.name
 
 def clone_from_cloud(repo):
@@ -49,14 +53,14 @@ def cloud_clone_all():
 def main():
     if len(sys.argv) > 1:
         #print({"all":github_clone_all() or cloud_clone_all(),"github":github_clone_all(),"cloud":cloud_clone_all()}.get(sys.argv[1],"invalid parameter")) #bad idea!
-	global clone_cmd
+        global clone_cmd
         clone_cmd+=' '.join(sys.argv[2:])+' '
-        if sys.argv[1]=="all": 
+        if sys.argv[1]=="all":
             github_clone_all()
             cloud_clone_all()
-        elif sys.argv[1]=="github": 
+        elif sys.argv[1]=="github":
             github_clone_all()
-        elif sys.argv[1]=="cloud": 
+        elif sys.argv[1]=="cloud":
             cloud_clone_all()
         else:
             print("invalid parameter")
