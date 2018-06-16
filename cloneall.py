@@ -27,7 +27,7 @@ def cloneall(repos,clone_func,rep_func):
 
 def github_clone_all():
     try:
-        repos=Github('150a9f1e3347c59f3ce3b189d538a76fb5400e09').get_user().get_repos()
+        repos=Github('a014a3246227bd6c657766fcb45a98613ac87480').get_user().get_repos()
         cloneall(repos,clone_from_github,lambda r:r.name )
         print("Successfully cloned from github")
     except Exception as e:
