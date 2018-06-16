@@ -4,8 +4,8 @@ from github import Github
 #can be obtained by
 #pip install pygithub
 #clone_options=['bare','recursive']
-auto_clone_excludes=['dev.git','arch.git','scripts.git','pram.git']
 clone_cmd='git clone --recursive '
+auto_clone_excludes=['dev.git','arch.git','scripts.git','pram.git']
 
 def clone(repo_name,base_url='',exclude=[]):
     if repo_name not in exclude and os.system(clone_cmd+base_url+repo_name)==0: #+' 2>/dev/null'
@@ -49,7 +49,8 @@ def cloud_clone_all():
 def main():
     if len(sys.argv) > 1:
         #print({"all":github_clone_all() or cloud_clone_all(),"github":github_clone_all(),"cloud":cloud_clone_all()}.get(sys.argv[1],"invalid parameter")) #bad idea!
-        clone_cmd+=' '.join(sys.argv[2:])
+	global clone_cmd
+        clone_cmd+=' '.join(sys.argv[2:])+' '
         if sys.argv[1]=="all": 
             github_clone_all()
             cloud_clone_all()
